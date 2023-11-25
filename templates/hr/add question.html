@@ -1,0 +1,77 @@
+{#<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">#}
+{#<html xmlns="http://www.w3.org/1999/xhtml">#}
+{#<head>#}
+{#<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />#}
+{#<title>Untitled Document</title>#}
+{#</head>#}
+{##}
+{#<body>#}
+{% extends 'hr/hr_index.html' %}
+{% block body %}
+<form id="form1" name="form1" method="post" action="/add_question_action">
+  <table width="200" border="1"  class="table table-success table-striped">
+    <tr>
+      <td>Vaccancy name </td>
+      <td><label>
+        <select name="vacancy">
+            {% for i in vacancy_obj %}
+            <option value="{{ i.id }}">
+                {{ i.vacancy_name }}
+            </option>
+            {% endfor %}
+        </select>
+
+      </label></td>
+    </tr>
+    <tr>
+      <td>Question</td>
+      <td><label>
+        <input type="text" name="Question" required/>
+      </label></td>
+    </tr>
+    <tr>
+      <td>option1</td>
+      <td><label>
+        <input type="text" name="option1" required/>
+      </label></td>
+    </tr>
+    <tr>
+      <td>option2</td>
+      <td><label>
+        <input type="text" name="option2" required/>
+      </label></td>
+    </tr>
+    <tr>
+      <td>option3</td>
+      <td><label>
+        <input type="text" name="option3" required/>
+      </label></td>
+    </tr>
+    <tr>
+      <td>option4</td>
+      <td><label>
+        <input type="text" name="option4" required/>
+      </label></td>
+    </tr>
+    <tr>
+      <td>Answer</td>
+      <td><label>
+        <input type="text" name="Answer" />
+      </label></td>
+    </tr>
+    <tr>
+      <td colspan="2" align="center"><label>
+
+          <button type="submit" class="btn btn-success">Add
+
+         </button>
+
+
+{#        <input type="submit" name="Submit" value="Add" />#}
+      </label></td>
+    </tr>
+  </table>
+</form>
+{#</body>#}
+{#</html>#}
+{% endblock %}

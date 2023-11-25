@@ -1,0 +1,69 @@
+{#<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">#}
+{#<html xmlns="http://www.w3.org/1999/xhtml">#}
+{#<head>#}
+{#<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />#}
+{#<title>Untitled Document</title>#}
+{#</head>#}
+{##}
+{#<body>#}
+{% extends 'hr/hr_index.html' %}
+{% block body %}
+<form id="form1" name="form1" method="post" action="{% url 'add_manage_vacancy_search' %}#about">
+  <table width="200" border="1" class="table table-success table-striped">
+    <tr>
+      <td colspan="7">Vacancy name
+        <label>
+        <input type="text" name="vacancy_name"  value="{{ vacancy }}"/>
+        </label>        <label>
+        <input type="submit" name="Submit" value="Search" />
+        </label></td>
+    </tr>
+    <tr>
+      <td>Vacancy name </td>
+      <td>No of Vacancy </td>
+      <td>Vacancy Details </td>
+      <td>Qualification</td>
+      <td>Date</td>
+      <td>&nbsp;</td>
+    </tr>
+      {% for i in vacancy_obj %}
+    <tr>
+      <td>&nbsp;{{ i.vacancy_name }}</td>
+      <td>&nbsp;{{ i.no_of_vacancy }}</td>
+      <td>&nbsp;{{ i.Vacancy_details }}</td>
+      <td>&nbsp;{{ i.Qualification }}</td>
+      <td>&nbsp;{{ i.date }}</td>
+      <td>
+          <button type="button" class="btn btn-primary">
+              <a href="{% url 'edit_vacancy' vacancy_id=i.id %}#about">
+            <span class="bi bi-pencil-square" aria-hidden="true"></span>
+              </a>
+         </button>
+          <button type="button" class="btn btn-danger">
+              <a href="{% url 'delete_vacancy' vacancy_id=i.id %}">
+            <span class="bi bi-trash3" aria-hidden="true"></span>
+              </a>
+         </button>
+
+          <button type="button" class="btn btn-secondary">
+              <a href="{% url 'test_result' id=i.id %}#about">Test Result
+           </a>
+         </button>
+
+      </td>
+    </tr>
+      {% endfor %}
+    <tr>
+      <td colspan="7" align="center"><label>
+           <button type="button" class="btn btn-success">
+              <a href="{% url 'add_vacancy' %}#about">
+            <span class="bi bi-plus-square" aria-hidden="true"></span>
+              </a>
+         </button>
+      </label></td>
+    </tr>
+  </table>
+</form>
+{#</body>#}
+{#</html>#}
+{% endblock %}

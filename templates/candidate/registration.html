@@ -1,0 +1,78 @@
+{#<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">#}
+{#<html xmlns="http://www.w3.org/1999/xhtml">#}
+{#<head>#}
+{#<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />#}
+{#<title>Untitled Document</title>#}
+{#</head>#}
+{##}
+{#<body>#}
+{% extends 'register_index.html' %}
+{% block body %}
+<form action="{% url 'register_action' %}#about" method="post" enctype="multipart/form-data" name="form1" id="form1">
+  <table width="200" border="1" class="table table-success table-striped">
+    <tr>
+        <td>Name</td><td>
+        <label>
+        <input type="text" name="name" required pattern="[A-Z a-z.]{3,25}"/>
+      </label></td>
+    </tr>
+    <tr>
+        <td>Place</td><td>
+        <label>
+        <input type="text" name="place" required pattern="[A-Z a-z.]{3,25}"/>
+      </label></td>
+    </tr>
+    <tr>
+        <td>Post</td><td>
+        <label>
+        <input type="text" name="post" required pattern="[A-Z a-z.]{3,25}"/>
+      </label></td>
+    </tr>
+    <tr>
+      <td>Pin</td><td>
+      <input type="text" name="pin" required pattern="[0-9]{6}"/></td>
+    </tr>
+    <tr>
+      <td>Phone</td><td>
+      <input type="text" name="phone" required pattern="[6789][0-9]{9}"/></td>
+    </tr>
+    <tr>
+      <td>Email</td><td>
+      <input type="email" name="email" required/></td>
+    </tr>
+
+    <tr>
+      <td>Qualification</td><td>
+      <select name="qualification" required>
+          <option>UG</option>
+          <option>PG</option>
+          <option>B-tech</option>
+          <option>M-tech</option>
+      </select></td>
+    </tr>
+    <tr>
+      <td>Photo</td><td>
+      <input type="file" name="photo" required/></td>
+    </tr><tr>
+      <td>Proof</td><td>
+      <input type="file" name="proof" required/></td>
+    </tr>
+    <tr>
+      <tr>
+      <td>Username</td><td>
+      <input type="text" name="username" required pattern="[A-Z a-z.]{3,25}"/></td>
+    </tr>
+       <tr>
+      <td>Password</td><td>
+      <input type="text" name="password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Must contain at least one
+       number and one uppercase and lowercase letter, and at least 8 or more characters" required/></td>
+    </tr>
+      <td colspan="2"><label>
+        <input type="submit" name="Submit" value="register" />
+      </label></td>
+    </tr>
+  </table>
+</form>
+{#</body>#}
+{#</html>#}
+{% endblock %}

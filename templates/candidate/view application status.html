@@ -1,0 +1,50 @@
+{#<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">#}
+{#<html xmlns="http://www.w3.org/1999/xhtml">#}
+{#<head>#}
+{#<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />#}
+{#<title>Untitled Document</title>#}
+{#</head>#}
+{##}
+{#<body>#}
+{% extends 'candidate/candidate_index.html' %}
+{% block body %}
+<form id="form1" name="form1" method="post" action="">
+  <table width="200" border="1" class="table table-success table-striped">
+    <tr>
+      <td>Vaccancy</td>
+      <td>Vaccancy details </td>
+      <td> Date </td>
+      <td>Status</td>
+    </tr>
+      {% for i in application_obj %}
+    <tr>
+      <td>&nbsp;{{ i.VACANCY.vacancy_name }}</td>
+      <td>&nbsp;{{ i.VACANCY.Vacancy_details }}</td>
+      <td>&nbsp;{{ i.date }}</td>
+        {% if i.status == 'accepted' %}
+            {% if i.ast == "0" %}
+            <td><a href="{% url 'attendtest' vacancy_id=i.VACANCY.id %}#about">Attend Test</a></td>
+            {% elif i.ast == "1"  %}
+                 <td><p>Progressing</p></td>{% else %}
+               <td><p> {{ i.ast }}</p></td>
+            {% endif %}
+        {% elif i.status == "pending" %}
+            <td><p>Pending</p></td>
+        {% elif i.status == "shortlisted" %}
+            <td><p>Shortlisted</p></td>
+        {% elif i.status == "selected" %}
+            <td><p>Selected</p></td>
+        {% elif i.status == "accepted" %}
+            <td><p>Accepted</p></td>
+        {% elif i.status == 'rejected' %}
+            <td><p>Rejected</p></td>
+        {% else %}
+
+        {% endif %}
+    </tr>
+      {% endfor %}
+  </table>
+</form>
+{#</body>#}
+{#</html>#}
+{% endblock %}

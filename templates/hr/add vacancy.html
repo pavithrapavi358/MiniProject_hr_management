@@ -1,0 +1,64 @@
+{#<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">#}
+{#<html xmlns="http://www.w3.org/1999/xhtml">#}
+{#<head>#}
+{#<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />#}
+{#<title>Untitled Document</title>#}
+{#</head>#}
+{##}
+{#<body>#}
+{% extends 'hr/hr_index.html' %}
+{% block body %}
+<form id="form1" name="form1" method="post" action="add_vacancy_action">
+  <table width="200" border="1"  class="table table-success table-striped">
+      <td>Vacancy name </td>
+      <td><label>
+        <input type="text" name="Vacancy_name" required pattern="[A-Z a-z.]{3,25}"/>
+      </label></td>
+    </tr>
+    <tr>
+      <td>No of Vacancy </td>
+      <td><label>
+        <input type="text" name="No_of_Vacancy" required pattern="[0-9]{0,250}"/>
+      </label></td>
+    </tr>
+    <tr>
+      <td>Vacancy Details </td>
+      <td><label>
+        <input type="text" name="Vacancy_Details" required />
+      </label></td>
+    </tr>
+{#    <tr>#}
+{#      <td>Date</td>#}
+{#      <td><label>#}
+{#        <input type="date" name="Date" required/>#}
+{#      </label></td>#}
+{#    </tr>#}
+    <tr>
+      <td>Qualification</td>
+      <td><label>
+        <input type="text" name="Qualification" required/>
+      </label></td>
+    </tr><tr>
+      <td>Test Date</td>
+      <td><label>
+        <input type="date" name="date" required/>
+      </label></td>
+    </tr><tr>
+      <td>Test Time</td>
+      <td><label>
+        <input type="time" name="time" required/>
+      </label></td>
+    </tr>
+    <tr>
+      <td colspan="2" align="center"><label>
+
+         <button type="submit" class="btn btn-success">Add
+         </button>
+{#        <input type="submit" name="Submit" value="Add" />#}
+      </label></td>
+    </tr>
+  </table>
+</form>
+{#</body>#}
+{#</html>#}
+{% endblock %}

@@ -1,0 +1,39 @@
+{#<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">#}
+{#<html xmlns="http://www.w3.org/1999/xhtml">#}
+{#<head>#}
+{#<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />#}
+{#<title>Untitled Document</title>#}
+{#</head>#}
+{##}
+{#<body>#}
+{% extends 'candidate/candidate_index.html' %}
+{% block body %}
+<form id="form1" name="form1" method="post" action="">
+  <table width="200" border="1" class="table table-success table-striped">
+    <tr>
+      <td>Vacancy name </td>
+      <td>Vacancy details </td>
+      <td>No.of Vacancy </td>
+      <td>Qualification</td>
+      <td>Date</td>
+      <td>&nbsp;</td>
+    </tr>
+      {% for i in vacancy_obj %}
+    <tr>
+      <td>&nbsp;{{ i.vacancy_name }}</td>
+      <td>&nbsp;{{ i.Vacancy_details }}</td>
+      <td>&nbsp;{{ i.no_of_vacancy }}</td>
+      <td>&nbsp;{{ i.Qualification }}</td>
+      <td>&nbsp;{{ i.date }}</td>
+        {% if i.ast == '0' %}
+      <td><a href="{% url 'send_application' vacancy_id=i.id %}">Apply</a></td>
+        {% else %}
+        <td><p>Applied</p></td>
+    {% endif %}
+    </tr>
+      {% endfor %}
+  </table>
+</form>
+{#</body>#}
+{#</html>#}
+{% endblock %}

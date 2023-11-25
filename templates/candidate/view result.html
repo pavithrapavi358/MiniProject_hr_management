@@ -1,0 +1,40 @@
+{#<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">#}
+{#<html xmlns="http://www.w3.org/1999/xhtml">#}
+{#<head>#}
+{#<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />#}
+{#<title>Untitled Document</title>#}
+{#</head>#}
+{##}
+{#<body>#}
+{% extends 'candidate/candidate_index.html' %}
+{% block body %}
+<form id="form1" name="form1" method="post" action="vacancy_name_search">
+  <table width="200" border="1" class="table table-success table-striped">
+{#   <tr>#}
+{#      <td colspan="7">Vacancy name#}
+{#        <label>#}
+{#        <input type="text" name="vacancy_name"  value="{{ vacancy }}"/>#}
+{#        </label>        <label>#}
+{#        <input type="submit" name="Submit" value="Search" />#}
+{#        </label></td>#}
+{#    </tr>#}
+
+    <tr>
+      <td>Date</td>
+      <td>Mark</td>
+      <td>vacancy</td>
+{#      <td>Vacancy</td>#}
+    </tr>
+      {% for i in result_obj %}
+    <tr>
+      <td>&nbsp;{{ i.date }}</td>
+      <td>&nbsp;{{ i.mark }}</td>
+      <td>&nbsp;{{ i.VACANCY.vacancy_name }}</td>
+{#      <td>&nbsp;{{ i. }}</td>#}
+    </tr>
+      {% endfor %}
+  </table>
+</form>
+{#</body>#}
+{#</html>#}
+{% endblock %}

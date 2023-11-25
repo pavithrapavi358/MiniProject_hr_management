@@ -1,0 +1,48 @@
+{#<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">#}
+{#<html xmlns="http://www.w3.org/1999/xhtml">#}
+{#<head>#}
+{#<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />#}
+{#<title>Untitled Document</title>#}
+{#</head>#}
+{##}
+{#<body>#}
+{% extends 'hr/hr_index.html' %}
+{% block body %}
+<form id="form1" name="form1" method="post" action="">
+  <table width="200" border="1"  class="table table-success table-striped">
+    <tr>
+      <td>Vaccancy name </td>
+      <td>Applicant name </td>
+      <td>Qualification</td>
+      <td>Address</td>
+
+      <td>&nbsp;</td>
+    </tr>
+      {% for i in interview_obj %}
+    <tr>
+      <td>&nbsp;{{ i.APPLICATION.VACANCY.vacancy_name }}</td>
+      <td>&nbsp;{{ i.APPLICATION.CANDIDATE.name }}</td>
+      <td>&nbsp;{{ i.APPLICATION.CANDIDATE.qualification }}</td>
+      <td>&nbsp;{{ i.APPLICATION.CANDIDATE.place }}, {{ i.APPLICATION.CANDIDATE.post }}, {{ i.APPLICATION.CANDIDATE.pin }}</td>
+        {% if i.status == 'scheduled' %}
+      <td>
+          <button type="button" class="btn btn-primary">
+              <a  href="{% url 'update_score' score_id=i.id %}#about">Update score
+{#            <span class="bi bi-trash3" aria-hidden="true"></span>#}
+              </a>
+         </button>
+
+
+{#          <a href="{% url 'update_score' score_id=i.id %}#about">update score</a>#}
+
+      </td>
+        {% else %}
+        <td><p>Score Updated</p></td>
+    {% endif %}
+    </tr>
+      {% endfor %}
+  </table>
+</form>
+{#</body>#}
+{#</html>#}
+{% endblock %}

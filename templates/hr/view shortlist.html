@@ -1,0 +1,44 @@
+{#<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">#}
+{#<html xmlns="http://www.w3.org/1999/xhtml">#}
+{#<head>#}
+{#<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />#}
+{#<title>Untitled Document</title>#}
+{#</head>#}
+{##}
+{#<body>#}
+{% extends 'hr/hr_index.html' %}
+{% block body %}
+<form id="form1" name="form1" method="post" action="">
+  <table width="200" border="1"  class="table table-success table-striped">
+    <tr>
+      <td>candidate</td>
+      <td>vacancy</td>
+      <td>qualification</td>
+        <td> </td>
+    </tr>
+      {% for i in exam_obj %}
+
+    <tr>
+      <td>&nbsp;{{ i.CANDIDATE.name }}</td>
+      <td>&nbsp;{{ i.VACANCY.vacancy_name }}</td>
+      <td>&nbsp;{{ i.CANDIDATE.qualification }}</td>
+
+        {% if i.interview == "0" %}
+      <td>
+          <button type="button" class="btn btn-primary">
+              <a  href="{% url 'shortlist_details' app_id=i.id %}#about">interview details
+{#            <span class="bi bi-trash3" aria-hidden="true"></span>#}
+              </a>
+         </button>
+
+{#          <a href="{% url 'shortlist_details' app_id=i.id %}#about">interview details</a></td>#}
+        {% elif i.interview == "1" %}
+        <td><p>Details sent successfully</p></td>
+    {% endif %}
+    </tr>
+      {% endfor %}
+  </table>
+</form>
+{#</body>#}
+{#</html>#}
+{% endblock %}

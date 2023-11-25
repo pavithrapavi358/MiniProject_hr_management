@@ -1,0 +1,83 @@
+{#<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">#}
+{#<html xmlns="http://www.w3.org/1999/xhtml">#}
+{#<head>#}
+{#<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />#}
+{#<title>Untitled Document</title>#}
+{#</head>#}
+{##}
+{#<body>#}
+{% extends 'admin/admin_index.html' %}
+{% block body %}
+<form id="form1" name="form1" method="post" action="add_hr_action" enctype="multipart/form-data">
+  <table width="200" border="1" class="table table-success table-striped">
+    <tr>
+      <td>Name</td>
+      <td><label>
+        <input type="text" name="Name" required pattern="[A-Z a-z.]{3,25}"/>
+      </label></td>
+    </tr>
+    <tr>
+      <td>Place</td>
+      <td><label>
+        <input type="text" name="Place" required pattern="[A-Z a-z.0-9]{3,25}"/>
+      </label></td>
+    </tr>
+    <tr>
+      <td>Post</td>
+      <td><label>
+        <input type="text" name="Post" required pattern="[A-Z a-z.0-9]{3,25}"/>
+      </label></td>
+    </tr>
+    <tr>
+      <td>Pin</td>
+      <td><label>
+        <input type="text" name="Pin" required pattern="[0-9]{6}"/>
+      </label></td>
+    </tr>
+    <tr>
+      <td>Phone</td>
+      <td><label>
+        <input type="text" name="Phone" required pattern="[6789][0-9]{9}"/>
+      </label></td>
+    </tr>
+    <tr>
+      <td>Email</td>
+      <td><label>
+        <input type="email" name="Email" required/>
+      </label></td>
+    </tr>
+    <tr>
+      <td>Photo</td>
+      <td><label>
+        <input type="file"  name="Photo" required/>
+      </label></td>
+    </tr>
+      <tr>
+      <td>Department</td>
+      <td><label>
+        <input type="text" name="dep" required />
+      </label></td>
+    </tr> <tr>
+      <td>username</td>
+      <td><label>
+        <input type="text" name="username" required pattern="[A-Z a-z.0-9]{3,25}"/>
+      </label></td>
+    </tr>
+    <tr>
+      <td>Password</td>
+      <td><label>
+        <input type="text" name="Password" required/>
+      </label></td>
+    </tr>
+
+    <tr>
+      <td colspan="3" align="center"><label>
+{#        <input type="submit" name="Submit" value="Add"/>#}
+          <button type="submit" class="btn btn-success">Add</button>
+      </label></td>
+    </tr>
+  </table>
+</form>
+{#</body>#}
+{#</html>#}
+{% endblock %}

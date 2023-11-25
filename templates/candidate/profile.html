@@ -1,0 +1,70 @@
+{#<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">#}
+{#<html xmlns="http://www.w3.org/1999/xhtml">#}
+{#<head>#}
+{#<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />#}
+{#<title>Untitled Document</title>#}
+{#</head>#}
+{##}
+{#<body>#}
+{% extends 'candidate/candidate_index.html' %}
+{% block body %}
+<form action="{% url 'update_profile' %}#about" method="post" enctype="multipart/form-data" name="form1" id="form1">
+  <table width="200" border="1" class="table table-success table-striped">
+    <tr>
+        <td>Name</td><td>
+        <label>
+        <input type="text" name="name" required pattern="[A-Z a-z.]{3,25}" value="{{ i.name }}"/>
+      </label></td>
+    </tr>
+    <tr>
+        <td>Place</td><td>
+        <label>
+        <input type="text" name="place" required pattern="[A-Z a-z.]{3,25}" value="{{ i.place }}"/>
+      </label></td>
+    </tr>
+    <tr>
+        <td>Post</td><td>
+        <label>
+        <input type="text" name="post" required pattern="[A-Z a-z.]{3,25}" value="{{ i.post }}"/>
+      </label></td>
+    </tr>
+    <tr>
+      <td>Pin</td><td>
+      <input type="text" name="pin" required pattern="[0-9]{6}" value="{{ i.pin }}"/></td>
+    </tr>
+    <tr>
+      <td>Phone</td><td>
+      <input type="text" name="phone" required pattern="[6789][0-9]{9}" value="{{ i.phone }}"/></td>
+    </tr>
+    <tr>
+      <td>Email</td><td>
+      <input type="email" name="email" required value="{{ i.email }}"/></td>
+    </tr>
+
+    <tr>
+      <td>Qualification</td><td>
+      <select name="qualification" required>
+          <option{% if i.qualification == "UG" %} selected {% endif %}>UG</option>
+          <option{% if i.qualification == "PG" %} selected {% endif %}>PG</option>
+          <option{% if i.qualification == "B-tech" %} selected {% endif %}>B-tech</option>
+          <option{% if i.qualification == "M-tech" %} selected {% endif %}>M-tech</option>
+      </select></td>
+    </tr>
+    <tr>
+      <td>Photo</td><td><img src="{{ i.photo.url }}" width="100" height="100"/><br/>
+      <input type="file" name="photo" /></td>
+    </tr><tr>
+      <td>Proof</td><td><img src="{{ i.proof.url }}" width="100" height="100"/><br/>
+      <input type="file" name="proof" /></td>
+    </tr>
+    <tr>
+    <tr>
+      <td colspan="2"><div  align="center">
+        <input type="submit" name="Submit" value="Update" class="btn btn-primary" />
+      </div></td>
+    </tr>
+  </table>
+</form>
+{#</body>#}
+{#</html>#}
+{% endblock %}

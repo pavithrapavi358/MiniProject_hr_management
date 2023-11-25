@@ -1,0 +1,31 @@
+{#<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">#}
+{#<html xmlns="http://www.w3.org/1999/xhtml">#}
+{#<head>#}
+{#<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />#}
+{#<title>Untitled Document</title>#}
+{#</head>#}
+{##}
+{#<body>#}
+{% extends 'admin/admin_index.html' %}
+{% block body %}
+<table width="200" border="1" class="table table-success table-striped">
+  <tr>
+    <td>Vacancy</td>
+    <td>No of Vacancy </td>
+    <td>Vacancy Details </td>
+    <td>Qualification </td>
+    <td>date</td>
+  </tr>
+    {% for i in vacancy_obj %}
+  <tr>
+    <td>&nbsp;{{ i.vacancy_name }}</td>
+    <td>&nbsp;{{ i.no_of_vacancy }}</td>
+    <td>&nbsp;{{ i.Vacancy_details }}</td>
+    <td>&nbsp;{{ i.Qualification }}</td>
+    <td>&nbsp;{{ i.date }}</td>
+  </tr>
+    {% endfor %}
+</table>
+{#</body>#}
+{#</html>#}
+{% endblock %}

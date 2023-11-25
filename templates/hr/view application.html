@@ -1,0 +1,59 @@
+{#<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">#}
+{#<html xmlns="http://www.w3.org/1999/xhtml">#}
+{#<head>#}
+{#<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />#}
+{#<title>Untitled Document</title>#}
+{#</head>#}
+{##}
+{#<body>#}
+{% extends 'hr/hr_index.html' %}
+{% block body %}
+<form id="form1" name="form1" method="post" action="view_application_search">
+  <table width="200" border="1"  class="table table-success table-striped">
+    <tr>
+      <td colspan="9">Applicant name
+        <label>
+        <input type="text" name="Applicant" value="{{ search }}"/>
+        </label>        <label>
+        <input type="submit" name="Submit" value="Search" />
+        </label></td>
+    </tr>
+    <tr>
+      <td>Vaccancy name </td>
+      <td>Candidate name </td>
+      <td>Address</td>
+      <td>Phone</td>
+      <td>Email</td>
+      <td>Photo</td>
+      <td>Qualification</td>
+      <td>Proof</td>
+      <td>Status</td>
+    </tr>
+      {% for i in application_obj %}
+    <tr>
+      <td>&nbsp;{{ i.VACANCY.vacancy_name }}</td>
+      <td>&nbsp;{{ i.CANDIDATE.name }}</td>
+      <td>&nbsp;{{ i.CANDIDATE.place }}, {{ i.CANDIDATE.post }}, {{ i.CANDIDATE.pin }}</td>
+      <td>&nbsp;{{ i.CANDIDATE.phone }}</td>
+      <td>&nbsp;{{ i.CANDIDATE.email }}</td>
+      <td>&nbsp;<img src="{{ i.CANDIDATE.photo.url }}" alt="error" style="height: 70px; width: 90px"/></td>
+      <td>&nbsp;{{ i.CANDIDATE.qualification }}</td>
+        <td>&nbsp;<a href="{{ i.CANDIDATE.proof.url }}" target="_blank" class="btn btn-secondary">Download</a></td>
+        {% if i.status == "pending" %}
+              <td><p><a class="text-primary" href="{% url 'accept_applicant' application_id=i.id %}">Accept</a></p>
+              <p><a class="text-danger"href="{% url 'reject_applicant' application_id=i.id %}">Reject</a></p></td></tr>
+          {% elif i.status == "accepted" %}
+              <td><p>Accepted</p></td>
+          {% elif i.status == "rejected" %}
+              <td><p>Rejected</p></td>
+          {% elif i.status == "selected" %}
+              <td><p>Selected</p></td>
+          {% elif i.status == "shortlisted" %}
+              <td><p>Shortlisted</p></td>
+          {% endif %}
+      {% endfor %}
+  </table>
+</form>
+{#</body>#}
+{#</html>#}
+{% endblock %}

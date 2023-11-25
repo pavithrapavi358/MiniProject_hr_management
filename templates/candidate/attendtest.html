@@ -1,0 +1,105 @@
+{% extends 'candidate/candidate_index.html' %}
+{% block body %}
+<head>
+    <style>
+body{
+    text-align: center;
+    background: #00ECB9;
+  font-family: sans-serif;
+  font-weight: 100;
+}
+h1{
+  color: #396;
+  font-weight: 100;
+  font-size: 40px;
+  margin: 40px 0px 20px;
+}
+ #clockdiv{
+    font-family: sans-serif;
+    color: #fff;
+    display: inline-block;
+    font-weight: 100;
+    text-align: center;
+    font-size: 30px;
+}
+#clockdiv > div{
+    padding: 10px;
+    border-radius: 3px;
+    background: #00BF96;
+    display: inline-block;
+}
+#clockdiv div > span{
+    padding: 15px;
+    border-radius: 3px;
+    background: #00816A;
+    display: inline-block;
+}
+smalltext{
+    padding-top: 5px;
+    font-size: 16px;
+}
+</style>
+  <script>
+setInterval(myTimer, 1000);
+const myInterval = setInterval(myTimer, 1000);
+
+function myTimer() {
+  const date = new Date();
+  document.getElementById("demo").innerHTML = date.toLocaleTimeString();
+}
+
+</script>
+    <script>
+const myTimeout = setTimeout(myGreeting, 3000);
+
+function myGreeting() {
+  document.getElementById("demo").innerHTML = "Time Over!"
+}
+</script>
+
+
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+<title>Untitled Document</title>
+</head>
+
+<body>
+<form action="/atexam#about" method="post" enctype="multipart/form-data" name="form1" id="form1">
+      <input type="hidden" name="q" value="{{ data.id }}" >
+  <p align="center">
+      <p>Attend test </p> Timer  <p id="demo" ></p><h2 id="demo1"></h2>
+
+  <div>
+
+    <table width="348" border="1" class="table">
+      <tr>
+        <th width="117" scope="row">{{ data.questions }}</th>
+        <td width="67"><label></label></td>
+      </tr>
+      <tr>
+        <th colspan="2" scope="row"><label>
+          <input name="radiobutton" type="radio" value="{{data.op1}}" />
+          {{data.op1}}<br />
+
+          <input name="radiobutton" type="radio" value="{{data.op2}}" />
+                    {{data.op2}}
+<br />
+          <input name="radiobutton" type="radio" value="{{data.op3}}" />
+                   {{data.op3}}<br />
+
+
+          <input name="radiobutton" type="radio" value="{{data.op4}}" />
+                  {{data.op4}}
+</label></th>
+      </tr>
+      <tr>
+        <th colspan="2" scope="row"><label>
+           <input type="submit" onclick="" name="button" {% if cnt < ss %} value="NEXT" class="btn btn-primary" {% else %} value="FINISH" class="btn btn-success" {% endif %}/>
+            <a href="{% url 'view_vacancy' %}#about" class="btn btn-danger">QUIT</a>
+        </label></th>
+      </tr>
+    </table>
+    <p>&nbsp;    </p>
+  </div>
+</form>
+</body>
+{% endblock %}
